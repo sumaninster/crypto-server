@@ -1,7 +1,7 @@
 {
     "swagger": "2.0",
     "info": {
-        "description": "This is a Crypto Server.",
+        "description": "This is a Crypto Server to fetch data from HitBTC API.",
         "title": "Crypto Server API",
         "termsOfService": "http://swagger.io/terms/",
         "contact": {
@@ -114,6 +114,44 @@
         }
     },
     "definitions": {
+        "main.CurrencyPair": {
+            "type": "object",
+            "properties": {
+                "base_currency": {
+                    "type": "string"
+                },
+                "fee_currency": {
+                    "type": "string"
+                },
+                "make_rate": {
+                    "type": "string"
+                },
+                "margin_trading": {
+                    "type": "boolean"
+                },
+                "max_initial_leverage": {
+                    "type": "string"
+                },
+                "quantity_increment": {
+                    "type": "string"
+                },
+                "quote_currency": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "string"
+                },
+                "take_rate": {
+                    "type": "string"
+                },
+                "tick_size": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                }
+            }
+        },
         "main.CurrencyPrice": {
             "type": "object",
             "properties": {
@@ -122,6 +160,9 @@
                 },
                 "bid": {
                     "type": "string"
+                },
+                "currency_pair": {
+                    "$ref": "#/definitions/main.CurrencyPair"
                 },
                 "high": {
                     "type": "string"
@@ -155,7 +196,7 @@
                 },
                 "message": {
                     "type": "string",
-                    "example": "Bad Request Error: the server cannot or will not process the request due to something that is perceived to be a client error (for example, malformed request syntax, invalid request message framing, or deceptive request routing)."
+                    "example": "Bad Request: The server cannot or will not process the request due to something that is perceived to be a client error (for example, malformed request syntax, invalid request message framing, or deceptive request routing)."
                 }
             }
         },
@@ -168,7 +209,7 @@
                 },
                 "message": {
                     "type": "string",
-                    "example": "File Not Found Error: Cannot retrieve the page that was requested. The following are some common causes of this error message: The requested file has been renamed. The requested file has been moved to another location and/or deleted."
+                    "example": "Not Found: Cannot retrieve the page that was requested. The following are some common causes of this error message: The requested file has been renamed. The requested file has been moved to another location and/or deleted."
                 }
             }
         },

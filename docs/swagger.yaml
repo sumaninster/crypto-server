@@ -1,11 +1,38 @@
 basePath: /api/v1
 definitions:
+  main.CurrencyPair:
+    properties:
+      base_currency:
+        type: string
+      fee_currency:
+        type: string
+      make_rate:
+        type: string
+      margin_trading:
+        type: boolean
+      max_initial_leverage:
+        type: string
+      quantity_increment:
+        type: string
+      quote_currency:
+        type: string
+      status:
+        type: string
+      take_rate:
+        type: string
+      tick_size:
+        type: string
+      type:
+        type: string
+    type: object
   main.CurrencyPrice:
     properties:
       ask:
         type: string
       bid:
         type: string
+      currency_pair:
+        $ref: '#/definitions/main.CurrencyPair'
       high:
         type: string
       last:
@@ -27,8 +54,8 @@ definitions:
         example: 400
         type: integer
       message:
-        example: 'Bad Request Error: the server cannot or will not process the request
-          due to something that is perceived to be a client error (for example, malformed
+        example: 'Bad Request: The server cannot or will not process the request due
+          to something that is perceived to be a client error (for example, malformed
           request syntax, invalid request message framing, or deceptive request routing).'
         type: string
     type: object
@@ -38,10 +65,9 @@ definitions:
         example: 404
         type: integer
       message:
-        example: 'File Not Found Error: Cannot retrieve the page that was requested.
-          The following are some common causes of this error message: The requested
-          file has been renamed. The requested file has been moved to another location
-          and/or deleted.'
+        example: 'Not Found: Cannot retrieve the page that was requested. The following
+          are some common causes of this error message: The requested file has been
+          renamed. The requested file has been moved to another location and/or deleted.'
         type: string
     type: object
   main.HTTPInternalServerError:
@@ -64,7 +90,7 @@ info:
     email: support@swagger.io
     name: API Support
     url: http://www.swagger.io/support
-  description: This is a Crypto Server.
+  description: This is a Crypto Server to fetch data from HitBTC API.
   license:
     name: Apache 2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html

@@ -121,6 +121,44 @@ const docTemplate = `{
         }
     },
     "definitions": {
+        "main.CurrencyPair": {
+            "type": "object",
+            "properties": {
+                "base_currency": {
+                    "type": "string"
+                },
+                "fee_currency": {
+                    "type": "string"
+                },
+                "make_rate": {
+                    "type": "string"
+                },
+                "margin_trading": {
+                    "type": "boolean"
+                },
+                "max_initial_leverage": {
+                    "type": "string"
+                },
+                "quantity_increment": {
+                    "type": "string"
+                },
+                "quote_currency": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "string"
+                },
+                "take_rate": {
+                    "type": "string"
+                },
+                "tick_size": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                }
+            }
+        },
         "main.CurrencyPrice": {
             "type": "object",
             "properties": {
@@ -129,6 +167,9 @@ const docTemplate = `{
                 },
                 "bid": {
                     "type": "string"
+                },
+                "currency_pair": {
+                    "$ref": "#/definitions/main.CurrencyPair"
                 },
                 "high": {
                     "type": "string"
@@ -162,7 +203,7 @@ const docTemplate = `{
                 },
                 "message": {
                     "type": "string",
-                    "example": "Bad Request Error: the server cannot or will not process the request due to something that is perceived to be a client error (for example, malformed request syntax, invalid request message framing, or deceptive request routing)."
+                    "example": "Bad Request: The server cannot or will not process the request due to something that is perceived to be a client error (for example, malformed request syntax, invalid request message framing, or deceptive request routing)."
                 }
             }
         },
@@ -175,7 +216,7 @@ const docTemplate = `{
                 },
                 "message": {
                     "type": "string",
-                    "example": "File Not Found Error: Cannot retrieve the page that was requested. The following are some common causes of this error message: The requested file has been renamed. The requested file has been moved to another location and/or deleted."
+                    "example": "Not Found: Cannot retrieve the page that was requested. The following are some common causes of this error message: The requested file has been renamed. The requested file has been moved to another location and/or deleted."
                 }
             }
         },
@@ -211,7 +252,7 @@ var SwaggerInfo = &swag.Spec{
 	BasePath:         "/api/v1",
 	Schemes:          []string{},
 	Title:            "Crypto Server API",
-	Description:      "This is a Crypto Server.",
+	Description:      "This is a Crypto Server to fetch data from HitBTC API.",
 	InfoInstanceName: "swagger",
 	SwaggerTemplate:  docTemplate,
 }
