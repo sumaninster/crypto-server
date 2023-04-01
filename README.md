@@ -14,7 +14,7 @@ go run *.go
 ## Configure supported currencies
 To manage supported currencies, update the variable "supportedCurrencySymbolsMap" in the file "config.go"
 
-## Swagger
+## Swagger API Docs
 
 http://localhost:8080/swagger/index.html
 
