@@ -17,3 +17,16 @@ To manage supported currencies, update the variable "supportedCurrencySymbolsMap
 ## Swagger
 
 http://localhost:8080/swagger/index.html
+
+
+## GET End Points
+
+### GET /currency/{symbol}
+
+http://localhost:8080/api/v1/currency/BTCUSDT
+
+http://localhost:8080/api/v1/currency/ETHBTC
+
+### GET /currency/all
+
+http://localhost:8080/api/v1/currency/all
