@@ -49,5 +49,4 @@ Once the build process is complete, you can run the Docker container with the fo
 
 docker run --rm -p 8080:8080 crypto-server
 
-
 This will start the Docker container and run the application inside it. The --rm flag tells Docker to remove the container once it exits.
