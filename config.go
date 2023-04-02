@@ -1,5 +1,7 @@
 package main
 
+const cacheDuration = 30
+
 var supportedCurrencySymbolsMap = map[string]bool{
     "BTCUSDT": true,
     "ETHBTC":  true,

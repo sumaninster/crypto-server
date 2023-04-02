@@ -56,7 +56,7 @@ func (h *HttpController) handleCurrencySymbol(c *gin.Context) {
             c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
             return
         }
-        err = cacheCurrencyPrice(symbol, currencyPrice, 30*time.Second, rdb)
+        err = cacheCurrencyPrice(symbol, currencyPrice, cacheDuration*time.Second, rdb)
         if err != nil {
             fmt.Println(err)
         }
@@ -116,7 +116,7 @@ func (h *HttpController) handleAllCurrencySymbols(c *gin.Context) {
         return
     }
     for symbol, currencyPrice := range currencyPricesMap {
-        cacheCurrencyPrice(symbol, currencyPrice, 30*time.Second, rdb)
+        cacheCurrencyPrice(symbol, currencyPrice, cacheDuration*time.Second, rdb)
     }
     c.JSON(http.StatusOK, currencyPricesMap)
 }
