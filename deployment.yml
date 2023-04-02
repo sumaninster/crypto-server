@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: crypto-server
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: crypto-server
+  template:
+    metadata:
+      labels:
+        app: crypto-server
+    spec:
+      containers:
+      - name: crypto-server
+        image: crypto-server:latest
+        ports:
+        - containerPort: 8080
