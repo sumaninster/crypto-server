@@ -1,6 +1,12 @@
 package main
 
-const cacheDuration = 30
+// Cache duration in seconds
+const cacheDuration = 3
+
+// Redis connection details
+const redisHost = "localhost:32768"
+const redisPassword = "redispw"
+const redisDB = 0
 
 var supportedCurrencySymbolsMap = map[string]bool{
     "BTCUSDT": true,

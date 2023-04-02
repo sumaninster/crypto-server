@@ -2,7 +2,6 @@ package main
 
 import (
     "github.com/gin-gonic/gin"
-    "github.com/redis/go-redis/v9"
     "net/http"
     "time"
     "fmt"
@@ -38,12 +37,8 @@ func (h *HttpController) handleCurrencySymbol(c *gin.Context) {
         c.JSON(http.StatusBadRequest, gin.H{"error": "symbol is required"})
         return
     }
-    rdb := redis.NewClient(&redis.Options{
-        Addr:     "localhost:6379",
-        Password: "",
-        DB:       0,
-    })
-    cachedCurrencyPrice, err := getCachedCurrencyPrice(symbol, rdb)
+    // Check if currency price is cached in Redis
+    cachedCurrencyPrice, err := getCachedCurrencyPrice(symbol)
     if err != nil {
         fmt.Println(err)
     }
@@ -51,12 +46,13 @@ func (h *HttpController) handleCurrencySymbol(c *gin.Context) {
     if cachedCurrencyPrice.Timestamp != "" {
         currencyPrice = cachedCurrencyPrice
     } else {
+        // Fetch currency price from API and cache it
         currencyPrice, err = fetchCurrencyPrice(symbol)
         if err != nil {
             c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
             return
         }
-        err = cacheCurrencyPrice(symbol, currencyPrice, cacheDuration*time.Second, rdb)
+        err = cacheCurrencyPrice(symbol, currencyPrice, cacheDuration*time.Second)
         if err != nil {
             fmt.Println(err)
         }
@@ -85,16 +81,11 @@ Finally, the function returns the currency prices as a map of currency symbol an
 //	@Failure		500	{object}	HTTPInternalServerError
 //	@Router			/currency/all [get]
 func (h *HttpController) handleAllCurrencySymbols(c *gin.Context) {
-    // Check if currency prices are cached in Redis
-    rdb := redis.NewClient(&redis.Options{
-        Addr:     "localhost:6379",
-        Password: "",
-        DB:       0,
-    })
     symbols := getSupportedCurrencySymbols()
     cachedCurrencyPrices := make(map[string]CurrencyPrice)
     for _, key := range symbols {
-        cachedCurrencyPrice, err := getCachedCurrencyPrice(key, rdb)
+        // Check if currency prices are cached in Redis
+        cachedCurrencyPrice, err := getCachedCurrencyPrice(key)
         if err != nil {
             fmt.Println(err)
         }
@@ -116,7 +107,7 @@ func (h *HttpController) handleAllCurrencySymbols(c *gin.Context) {
         return
     }
     for symbol, currencyPrice := range currencyPricesMap {
-        cacheCurrencyPrice(symbol, currencyPrice, cacheDuration*time.Second, rdb)
+        cacheCurrencyPrice(symbol, currencyPrice, cacheDuration*time.Second)
     }
     c.JSON(http.StatusOK, currencyPricesMap)
 }
