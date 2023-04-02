@@ -42,12 +42,12 @@ Make sure you have Docker installed on your machine.
 Open a terminal or command prompt in the same directory as the Dockerfile.
 Run the following command to build the Docker image:
 
-docker build -t myapp .
+docker build -t crypto-server .
 
-This will build a Docker image with the name myapp.
+This will build a Docker image with the name crypto-server.
 Once the build process is complete, you can run the Docker container with the following command:
 
-docker run --rm -p 8080:8080 myapp
+docker run --rm -p 8080:8080 crypto-server
 
 
 This will start the Docker container and run the application inside it. The --rm flag tells Docker to remove the container once it exits.
