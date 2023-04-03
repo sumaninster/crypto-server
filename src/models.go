@@ -1,4 +1,4 @@
-package main
+package src
 
 // Struct to represent the currency price data returned by the HitBTC API:
 type CurrencyPrice struct {

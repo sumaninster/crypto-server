@@ -6,6 +6,7 @@ import (
     "github.com/swaggo/gin-swagger" // gin-swagger middleware
     "github.com/swaggo/files" // swagger embed files
     _ "github.com/sumaninster/crypto-server/docs"
+    "github.com/sumaninster/crypto-server/src"
 )
 
 /*
@@ -43,9 +44,9 @@ func main() {
     {
         currency := v1.Group("/currency")
         {
-            h := HttpController{}
-            currency.GET("/:symbol", h.handleCurrencySymbol)
-            currency.GET("/all", h.handleAllCurrencySymbols)
+            h := src.HttpController{}
+            currency.GET("/:symbol", h.HandleCurrencySymbol)
+            currency.GET("/all", h.HandleAllCurrencySymbols)
         }
     }
     r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))

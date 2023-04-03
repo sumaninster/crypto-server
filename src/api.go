@@ -1,4 +1,4 @@
-package main
+package src
 
 import (
     "github.com/gin-gonic/gin"
@@ -31,7 +31,7 @@ If there is an error at any point during the process, it returns an error respon
 //	@Failure		404		{object}	HTTPFileNotFoundError
 //	@Failure		500		{object}	HTTPInternalServerError
 //	@Router			/currency/{symbol} [get]
-func (h *HttpController) handleCurrencySymbol(c *gin.Context) {
+func (h *HttpController) HandleCurrencySymbol(c *gin.Context) {
     symbol := c.Param("symbol")
     if symbol == "" {
         c.JSON(http.StatusBadRequest, gin.H{"error": "symbol is required"})
@@ -80,7 +80,7 @@ Finally, the function returns the currency prices as a map of currency symbol an
 //	@Failure		404	{object}	HTTPFileNotFoundError
 //	@Failure		500	{object}	HTTPInternalServerError
 //	@Router			/currency/all [get]
-func (h *HttpController) handleAllCurrencySymbols(c *gin.Context) {
+func (h *HttpController) HandleAllCurrencySymbols(c *gin.Context) {
     symbols := getSupportedCurrencySymbols()
     cachedCurrencyPrices := make(map[string]CurrencyPrice)
     for _, key := range symbols {

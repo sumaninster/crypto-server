@@ -1,4 +1,4 @@
-package main
+package src
 
 // Cache duration in seconds
 const cacheDuration = 3
