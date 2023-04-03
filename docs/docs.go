@@ -44,26 +44,26 @@ const docTemplate = `{
                         "schema": {
                             "type": "object",
                             "additionalProperties": {
-                                "$ref": "#/definitions/main.CurrencyPrice"
+                                "$ref": "#/definitions/src.CurrencyPrice"
                             }
                         }
                     },
                     "400": {
                         "description": "Bad Request",
                         "schema": {
-                            "$ref": "#/definitions/main.HTTPBadRequestError"
+                            "$ref": "#/definitions/src.HTTPBadRequestError"
                         }
                     },
                     "404": {
                         "description": "Not Found",
                         "schema": {
-                            "$ref": "#/definitions/main.HTTPFileNotFoundError"
+                            "$ref": "#/definitions/src.HTTPFileNotFoundError"
                         }
                     },
                     "500": {
                         "description": "Internal Server Error",
                         "schema": {
-                            "$ref": "#/definitions/main.HTTPInternalServerError"
+                            "$ref": "#/definitions/src.HTTPInternalServerError"
                         }
                     }
                 }
@@ -95,25 +95,25 @@ const docTemplate = `{
                     "200": {
                         "description": "CurrencyPrice object",
                         "schema": {
-                            "$ref": "#/definitions/main.CurrencyPrice"
+                            "$ref": "#/definitions/src.CurrencyPrice"
                         }
                     },
                     "400": {
                         "description": "Bad Request",
                         "schema": {
-                            "$ref": "#/definitions/main.HTTPBadRequestError"
+                            "$ref": "#/definitions/src.HTTPBadRequestError"
                         }
                     },
                     "404": {
                         "description": "Not Found",
                         "schema": {
-                            "$ref": "#/definitions/main.HTTPFileNotFoundError"
+                            "$ref": "#/definitions/src.HTTPFileNotFoundError"
                         }
                     },
                     "500": {
                         "description": "Internal Server Error",
                         "schema": {
-                            "$ref": "#/definitions/main.HTTPInternalServerError"
+                            "$ref": "#/definitions/src.HTTPInternalServerError"
                         }
                     }
                 }
@@ -121,7 +121,7 @@ const docTemplate = `{
         }
     },
     "definitions": {
-        "main.CurrencyPair": {
+        "src.CurrencyPair": {
             "type": "object",
             "properties": {
                 "base_currency": {
@@ -159,7 +159,7 @@ const docTemplate = `{
                 }
             }
         },
-        "main.CurrencyPrice": {
+        "src.CurrencyPrice": {
             "type": "object",
             "properties": {
                 "ask": {
@@ -169,7 +169,7 @@ const docTemplate = `{
                     "type": "string"
                 },
                 "currency_pair": {
-                    "$ref": "#/definitions/main.CurrencyPair"
+                    "$ref": "#/definitions/src.CurrencyPair"
                 },
                 "high": {
                     "type": "string"
@@ -194,7 +194,7 @@ const docTemplate = `{
                 }
             }
         },
-        "main.HTTPBadRequestError": {
+        "src.HTTPBadRequestError": {
             "type": "object",
             "properties": {
                 "code": {
@@ -207,7 +207,7 @@ const docTemplate = `{
                 }
             }
         },
-        "main.HTTPFileNotFoundError": {
+        "src.HTTPFileNotFoundError": {
             "type": "object",
             "properties": {
                 "code": {
@@ -220,7 +220,7 @@ const docTemplate = `{
                 }
             }
         },
-        "main.HTTPInternalServerError": {
+        "src.HTTPInternalServerError": {
             "type": "object",
             "properties": {
                 "code": {

@@ -1,6 +1,6 @@
 basePath: /api/v1
 definitions:
-  main.CurrencyPair:
+  src.CurrencyPair:
     properties:
       base_currency:
         type: string
@@ -25,14 +25,14 @@ definitions:
       type:
         type: string
     type: object
-  main.CurrencyPrice:
+  src.CurrencyPrice:
     properties:
       ask:
         type: string
       bid:
         type: string
       currency_pair:
-        $ref: '#/definitions/main.CurrencyPair'
+        $ref: '#/definitions/src.CurrencyPair'
       high:
         type: string
       last:
@@ -48,7 +48,7 @@ definitions:
       volume_quote:
         type: string
     type: object
-  main.HTTPBadRequestError:
+  src.HTTPBadRequestError:
     properties:
       code:
         example: 400
@@ -59,7 +59,7 @@ definitions:
           request syntax, invalid request message framing, or deceptive request routing).'
         type: string
     type: object
-  main.HTTPFileNotFoundError:
+  src.HTTPFileNotFoundError:
     properties:
       code:
         example: 404
@@ -70,7 +70,7 @@ definitions:
           renamed. The requested file has been moved to another location and/or deleted.'
         type: string
     type: object
-  main.HTTPInternalServerError:
+  src.HTTPInternalServerError:
     properties:
       code:
         example: 500
@@ -115,19 +115,19 @@ paths:
         "200":
           description: CurrencyPrice object
           schema:
-            $ref: '#/definitions/main.CurrencyPrice'
+            $ref: '#/definitions/src.CurrencyPrice'
         "400":
           description: Bad Request
           schema:
-            $ref: '#/definitions/main.HTTPBadRequestError'
+            $ref: '#/definitions/src.HTTPBadRequestError'
         "404":
           description: Not Found
           schema:
-            $ref: '#/definitions/main.HTTPFileNotFoundError'
+            $ref: '#/definitions/src.HTTPFileNotFoundError'
         "500":
           description: Internal Server Error
           schema:
-            $ref: '#/definitions/main.HTTPInternalServerError'
+            $ref: '#/definitions/src.HTTPInternalServerError'
       summary: Get the real-time crypto price for a currency symbol
       tags:
       - Currency
@@ -143,20 +143,20 @@ paths:
           description: Map of currency symbols and their real-time prices
           schema:
             additionalProperties:
-              $ref: '#/definitions/main.CurrencyPrice'
+              $ref: '#/definitions/src.CurrencyPrice'
             type: object
         "400":
           description: Bad Request
           schema:
-            $ref: '#/definitions/main.HTTPBadRequestError'
+            $ref: '#/definitions/src.HTTPBadRequestError'
         "404":
           description: Not Found
           schema:
-            $ref: '#/definitions/main.HTTPFileNotFoundError'
+            $ref: '#/definitions/src.HTTPFileNotFoundError'
         "500":
           description: Internal Server Error
           schema:
-            $ref: '#/definitions/main.HTTPInternalServerError'
+            $ref: '#/definitions/src.HTTPInternalServerError'
       summary: Get the real-time crypto prices for all supported currencies
       tags:
       - Currency
