@@ -36,7 +36,7 @@ http://localhost:8080/api/v1/currency/ETHBTC
 
 http://localhost:8080/api/v1/currency/all
 
-## Docker Containeer
+## Docker Container
 
 Make sure you have Docker installed on your machine.
 Open a terminal or command prompt in the same directory as the Dockerfile.
