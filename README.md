@@ -14,10 +14,10 @@ go run *.go
 ## Configure 
 
 ### Supported Currencies
-To manage supported currencies, update the variable "supportedCurrencySymbolsMap" in the file "config.go"
+To manage supported currencies, update the variable "supportedCurrencySymbolsMap" in the file "src/config.go"
 
 ### Redis Server
-Redis sever is used to cache values. To confirue redis server, update the variables "redisHost", "redisPassword" & "redisDB" in the file "config.go"
+Redis sever is used to cache values. To confirue redis server, update the variables "redisHost", "redisPassword" & "redisDB" in the file "src/config.go"
 
 ## Swagger API Docs
 
